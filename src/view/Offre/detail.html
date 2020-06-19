@@ -1,0 +1,54 @@
+{include file='src/view/demandeur/heander.html'}
+
+<div class="overlay"></div>
+<div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-start">
+        <div class="col-md-12 ftco-animate text-center mb-5">
+            <h1 class="mb-4">Decouvrez ici nos meilleurs offres d'emploie!...</h1>
+            <p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Offre</span></p>
+            <h1 class="mb-3 bread">Details Offre</h1>
+        </div>
+    </div>
+</div>
+</div>
+<section class="ftco-section ftco-candidates ftco-candidates-2 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 pr-lg-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="team d-md-flex p-4 bg-white">
+                            <div class="img" style="background-image: url('{$url_base}public/image/{$offre->getEntreprise()->getPhoto()}');"></div>
+                            <div class="text pl-md-4">
+                                <span class="location mb-3">Entreprise: {$offre->getEntreprise()->getNom()}</span>
+                                <h2>Titre: {$offre->getTitre()}</h2>
+                                <span class="position">Experience:{$offre->getNiveau()}</span><br>
+                                <span class="position">Domaine:{$offre->getDomaine()}</span><br/>
+                                <span class="position">Profile:{$offre->getProfil()}</span>
+                                <p class="mb-2">{$offre->getDescription()}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-8 mb-5">
+            <form method="post" class="p-5 bg-white" action="{$url_base}demande/postuler/{$offre->getId()}">
+                <div class="row form-group">
+                    <div class="col-md-12"><h3>Lettre Motivation<small>(*)</small>{if isset($erro)}{if $error==1}<small class="text-danger">Champ obligatoir...</small>{/if}{/if}</h3></div>
+                    <div class="col-md-12 mb-3 mb-md-0">
+                        <textarea name="motivation" class="form-control" id="" cols="28" rows="8" required></textarea>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <input type="submit" value="Postuler" class="btn btn-primary  py-2 px-5">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{include file='src/view/demandeur/footer.html'}
